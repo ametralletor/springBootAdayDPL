@@ -29,7 +29,7 @@ public class AnimeControllerTest {
 		Anime  a = new  Anime();
 		a.setTitulo("One Piece");
 
-		when(service.obtenerTodos()).thenReturn(List.of(a));
+		when(service.findAll()).thenReturn(List.of(a));
 
 		mockMvc.perform(get("/api/animes"))
 			.andExpect(status().isOk())

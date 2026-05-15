@@ -23,17 +23,28 @@ public class AnimeServiceTest {
     @BeforeEach
     public void setUp() {
         anime = new Anime();
-        anime.setId(1L);
-        anime.setTitulo("Naruto");
-        anime.setGenero("Shonen");
-        anime.setEpisodios(220);
+        anime.setId(2L);
+        anime.setTitulo("Ponyo");
+        anime.setGenero("Aventura");
+        anime.setEpisodios(1);
+    }
+
+    @Test
+    void testGuardarAnime() {
+        when(repository.save(any(Anime.class))).thenReturn(anime);
+
+        Anime guardado = service.save(anime);
+
+        assertNotNull(guardado);
+        assertEquals("Ponyo", guardado.getTitulo());
+        verify(repository, times(1)).save(any(Anime.class));
     }
 
     @Test
     void testObtenerTodos(){
             when(repository.findAll()).thenReturn(List.of(anime));
 			
-			List<Anime> lista = service.obtenerTodos();
+			List<Anime> lista = service.findAll();
 
 			assertFalse(lista.isEmpty());
 			assertEquals(1, lista.size());
