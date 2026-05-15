@@ -25,7 +25,7 @@ public class AnimeServiceTest {
         anime = new Anime();
         anime.setId(2L);
         anime.setTitulo("Ponyo");
-        anime.setGenero("Animación");
+        anime.setGenero("Aventura");
         anime.setEpisodios(1);
     }
 
@@ -36,7 +36,7 @@ public class AnimeServiceTest {
         Anime guardado = service.save(anime);
 
         assertNotNull(guardado);
-        assertEquals("Prueba", guardado.getTitulo());
+        assertEquals("Ponyo", guardado.getTitulo());
         verify(repository, times(1)).save(any(Anime.class));
     }
 
