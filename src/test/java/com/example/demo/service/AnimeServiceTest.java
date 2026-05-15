@@ -23,10 +23,21 @@ public class AnimeServiceTest {
     @BeforeEach
     public void setUp() {
         anime = new Anime();
-        anime.setId(1L);
-        anime.setTitulo("Naruto");
-        anime.setGenero("Shonen");
-        anime.setEpisodios(220);
+        anime.setId(2L);
+        anime.setTitulo("Ponyo");
+        anime.setGenero("Animación");
+        anime.setEpisodios(1);
+    }
+
+    @Test
+    void testGuardarAnime() {
+        when(repository.save(any(Anime.class))).thenReturn(anime);
+
+        Anime guardado = service.save(anime);
+
+        assertNotNull(guardado);
+        assertEquals("Prueba", guardado.getTitulo());
+        verify(repository, times(1)).save(any(Anime.class));
     }
 
     @Test
