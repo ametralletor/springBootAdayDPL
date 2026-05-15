@@ -33,7 +33,7 @@ public class AnimeServiceTest {
     void testObtenerTodos(){
             when(repository.findAll()).thenReturn(List.of(anime));
 			
-			List<Anime> lista = service.obtenerTodos();
+			List<Anime> lista = service.findAll();
 
 			assertFalse(lista.isEmpty());
 			assertEquals(1, lista.size());
